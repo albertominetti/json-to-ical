@@ -57,9 +57,17 @@ While the application is running, as soon as a new `*.json` file is available in
 
 I choose to use spring-boot to quickly setup an application that can run on any JVM with a minimal configuration and Spring Framework to process, split and aggregate the bulk amount of data using pipes and filters architecture.
 
+### Enterprise Integration Patterns
+
+To meet these requirements, several libraries and frameworks are extremely useful, especially the ones that implement the [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/) described by Bobby Woolf and Gregor Hohpe in the homonym [book](https://www.amazon.com/o/asin/0321200683/ref=nosim/enterpriseint-20).
+
+Here the main flow of the application described using [Visual Paradigm](https://online.visual-paradigm.com/diagrams/features/enterprise-integration-patterns-diagram-tool/) design tool for EIP:
+
+![GitHub Logo](json-to-ical.png)
+
 ### Spring Integration versus Apache Camel
 
-To meet these requirements, several libraries and frameworks are extremely useful, especially the ones that implement the [enterprise integration patterns](https://www.enterpriseintegrationpatterns.com/) described by Bobby Woolf and Gregor Hohpe in the homonyms [book](https://www.amazon.com/o/asin/0321200683/ref=nosim/enterpriseint-20). Two main frameworks implement these patterns: Apache Camel and Spring Integration.
+Two main frameworks implement the EIP: Apache Camel and Spring Integration.
 
 I have extensive experience with [Apache Camel](https://camel.apache.org/) in the field of banking messaging with many standards (SEPA, SWIFT, FIX, Temenos, Caceis, Kondor+, Morning*, etc.) and many protocols (HTTP, REST, jdbc, TibcoMQ, ActiveMQ, IBM-MQ, SFTP,etc ), it has a quite nice java dsl, despite several people still use the xml description, and it fits well when involving many not homogeneous systems because of the [comprehensive components and adapters](https://camel.apache.org/components/latest/index.html).
 
@@ -78,7 +86,6 @@ Final consideration about Spring Integration:
 * it exposes "internals" of EIP that are hidden in Camel, like channels, gateway, poller, etc.
 * it is possible to ignore the internals and focus on the intention, like with Camel
 * the Spring community is bigger and seems that there is more support for the newest components than with Camel, like for RSocket
-
 
 
 ### Useful resources:
