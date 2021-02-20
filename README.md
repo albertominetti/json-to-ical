@@ -1,4 +1,4 @@
-# Json to iCalendar
+# Json to iCalendar (with Enterprise Integration Patterns)
 
 ## Overview
 
