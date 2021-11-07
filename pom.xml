@@ -105,6 +105,41 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>enforce-no-snapshots</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireReleaseDeps>
+                                    <message>No Snapshot Allowed!</message>
+                                </requireReleaseDeps>
+                                <dependencyConvergence/>
+                                <requireSameVersions>
+                                    <plugins>
+                                        <plugin>org.apache.maven.plugins:maven-surefire-plugin</plugin>
+                                        <plugin>org.apache.maven.plugins:maven-failsafe-plugin</plugin>
+                                        <plugin>org.apache.maven.plugins:maven-surefire-report-plugin</plugin>
+                                    </plugins>
+                                </requireSameVersions>
+                                <requireSameVersions>
+                                    <dependencies>
+                                        <dependency>org.apache.maven</dependency> <!-- or org.apache.maven:* -->
+                                    </dependencies>
+                                </requireSameVersions>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
